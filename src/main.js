@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import CoordinateTransform from './components/CoordinateTransform.vue'
+import CronExpressions from './components/CronExpressions.vue'
 
 
 Vue.config.debug = true
@@ -20,6 +21,10 @@ const routes = [
     {
         path: '/coordtransform',
         component: CoordinateTransform
+    },
+    {
+        path:'/cron',
+        component:CronExpressions
     }
 ]
 

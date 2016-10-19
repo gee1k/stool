@@ -1,17 +1,28 @@
 <template>
     <div>
         <div id="head">
-            <el-menu default-active="coordtransform" mode="horizontal" @select="handleselect" :router="true">
-                <el-menu-item index="1">Svend</el-menu-item>
-                <el-submenu index="2">
-                    <template slot="title">GIS相关</template>
-                    <el-menu-item index="coordtransform">坐标转换工具</el-menu-item>
-                </el-submenu>
-                <el-submenu index="3">
-                    <template slot="title">其他工具</template>
-                    <el-menu-item index="generatecron">Cron表达式</el-menu-item>
-                </el-submenu>
-            </el-menu>
+            <el-row>
+                <el-col :span="16" :offset="4">
+                    <el-menu default-active="coordtransform" class="el-menu-demo" mode="horizontal" @select="navChange"
+                             :router="true">
+                        <el-submenu index="1">
+                            <template slot="title">JSON相关</template>
+                        </el-submenu>
+                        <el-submenu index="2">
+                            <template slot="title">格式化</template>
+                        </el-submenu>
+                        <el-submenu index="3">
+                            <template slot="title">编码/加密</template>
+                        </el-submenu>
+                        <el-submenu index="4">
+                            <template slot="title">其他工具</template>
+                            <el-menu-item index="coordtransform">坐标转换工具</el-menu-item>
+                            <el-menu-item index="cron">Cron表达式</el-menu-item>
+                        </el-submenu>
+
+                    </el-menu>
+                </el-col>
+            </el-row>
         </div>
 
         <router-view></router-view>
@@ -21,9 +32,7 @@
     require("script!./lib/clipboard.min.js")
     export default{
         methods: {
-            handleselect(index, indexPath){
-                if (index === '1')
-                    window.location.href = 'http://svend.cc'
+            navChange(index, indexPath){
                 console.log('${index}---${indexPath}')
             }
         }
@@ -37,6 +46,6 @@
     }
 
     #head {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 </style>

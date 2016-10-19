@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
+        publicPath: './dist/',
         filename: 'build.js'
     },
     module: {
@@ -35,17 +35,24 @@ module.exports = {
             },
             {
                 test: /\.(eot|woff|woff2|ttf)$/,
-                loader: 'file'
+                loader: 'file',
+                options: {
+                    name: '[name].[ext]?[hash]'
+                }
             }
         ]
     },
     resolve: {
+        // extensions: ['', '.js', '.vue', '.css'],
         alias: {vue: 'vue/dist/vue.js'}
     },
     devServer: {
         historyApiFallback: true,
         noInfo: true
     },
+    plugins: [
+        new webpack.BannerPlugin('This file is created by Svend')
+    ],
     devtool: '#eval-source-map'
 }
 

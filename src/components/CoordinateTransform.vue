@@ -1,14 +1,10 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="12" :offset="6">
-                <el-alert
-                        title="提示"
-                        type="warning"
-                        description="多个坐标以';'分开，中文标点会被自动转成英文标点"
-                        show-icon
-                        :closable="false">
-                </el-alert>
+    <el-row>
+        <el-col :span="16" :offset="4">
+            <el-card class="box-card">
+                <el-card class="box-card">
+                    坐标转换工具：提供百度坐标（BD09）、国测局坐标（火星坐标，GCJ02）、和WGS84坐标系之间的转换
+                </el-card>
                 <br>
                 <div class="grid-content bg-purple-dark">
                     <el-input type="textarea" id="coord"
@@ -17,6 +13,14 @@
                               v-model="coord"
                               @keyup.native="verificationCoord">
                     </el-input>
+                    <br>
+                    <el-alert
+                            title="提示"
+                            type="info"
+                            description="多个坐标以';'分开，中文标点会被自动转成英文标点"
+                            show-icon
+                            :closable="false">
+                    </el-alert>
                     <br>
                     <el-select v-model="method" placeholder="转换方式" id="method">
                         <el-option
@@ -55,11 +59,11 @@
                         </el-tooltip>
                     </div>
                     </p>
+                    <br><br>
                 </div>
-            </el-col>
-        </el-row>
-
-    </div>
+            </el-card>
+        </el-col>
+    </el-row>
 </template>
 <script>
     require("script!./../lib/CoordinateTransform.js")
@@ -197,8 +201,5 @@
     }
 </script>
 <style>
-    .bottom {
-        clear: both;
-        text-align: center;
-    }
+
 </style>
